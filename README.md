@@ -18,7 +18,7 @@ This project builds a deep learning model to automatically classify various cat 
 
 
 ## Getting Data
-The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/felis-taxonomy-image-classification/data">Felis Taxonomy Image Classification</a> dataset from Kaggle, containing 519 JPG images of seven different cat species:
+The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/felis-taxonomy-image-classification/data">Felis Taxonomy Image Classification</a> dataset, containing 519 JPG images of seven different cat species:
 
 * Domestic cat (F. catus)
 * European wildcat (F. silvestris)
@@ -32,10 +32,9 @@ The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/fe
 
 
 ## Data Preprocessing
-- **Data Split:** The dataset was divided into 80% for training and 20% for testing to ensure the model learns well and is tested fairly..
-- **Image Preprocessing:**
-  - Resizing: All images were resized to 224x224 pixels to keep them consistent.
-- **Image Data Augmentation:** To make the model more adaptable and prevent it from overfitting, these techniques were applied:
+- **Data Split:** The dataset was divided into 80% for training and 20% for testing to ensure the model learns well and is evaluated fairly.
+- **Image Preprocessing:** All images were resized to 224x224 pixels so they are perfectly uniform for the computer to read.
+- **Image Data Augmentation:** To make the model more adaptable and prevent overfitting (getting too memorized on the training images), these techniques were applied:
   - Image Rotation
   - Image Translation (shifting)
   - Image Flipping
