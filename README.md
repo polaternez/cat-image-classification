@@ -1,5 +1,5 @@
-# Felis Image Classification: Project Overview  
-This project builds a deep learning model to automatically classify various Felis species from their images.
+# Cat Image Classification: Project Overview  
+This project builds a deep learning model to automatically classify various cat (Felis) species from their images.
 
 - Utilizing the Felis Taxonomy Image Classification dataset from Kaggle.
 - Performing data preprocessing and image augmentation to enhance model generalization.
@@ -18,7 +18,7 @@ This project builds a deep learning model to automatically classify various Feli
 
 
 ## Getting Data
-The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/felis-taxonomy-image-classification/data">Felis Taxonomy Image Classification</a> dataset from Kaggle, containing 519 JPG images of seven Felis species:
+The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/felis-taxonomy-image-classification/data">Felis Taxonomy Image Classification</a> dataset from Kaggle, containing 519 JPG images of seven different cat species:
 
 * Domestic cat (F. catus)
 * European wildcat (F. silvestris)
@@ -37,24 +37,28 @@ The project utilizes the <a href="https://www.kaggle.com/datasets/datahmifitb/fe
   - Resizing: All images were resized to 224x224 pixels to keep them consistent.
 - **Image Data Augmentation:** To make the model more adaptable and prevent it from overfitting, these techniques were applied:
   - Image Rotation
-  - Image Translation
+  - Image Translation (shifting)
   - Image Flipping
   - Contrast Adjustment
 
 ## Model Building 
-The model is based on a pre-trained EfficientNetB0 model adapted through transfer learning with the following architecture:
+The brain of this project relies on EfficientNetB0, a highly powerful pre-trained image recognition model. We adapted it using transfer learning (taking a model that already knows how to see shapes and colors and teaching it specifically about cats).
+
+Here is the blueprint of our network:
 
 ![alt text](https://github.com/polaternez/felis-image-classification/blob/master/reports/figures/model.png "Convolutional Neural Network(CNN)")
 
 
 ## Model Evaluation 
-The model's performance is measured using categorical cross-entropy and optimized using the ADAM algorithm. The results are as follows:
+The model's performance is measured using categorical cross-entropy (a score of how confident it is with its guesses) and optimized using the ADAM algorithm (the math tool that helps the model learn from its mistakes).
+
+The training results are shown below:
 
 ![alt text](https://github.com/polaternez/felis-image-classification/blob/master/reports/figures/model_evaluation.png "Model Performances")
 
 
 ## Productionization 
-A user-friendly API is developed using Flask. The API receives image inputs and returns the predicted Felis species.
+To bring the model to life, a user-friendly API was developed using Flask. This allows the model to act as a backend service: you upload a cat photo, and it instantly sends back the predicted species name.
 
 ![alt text](https://github.com/polaternez/felis-image-classification/blob/master/reports/figures/flask-api.png "Felis Image Classification API")
 
