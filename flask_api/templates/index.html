@@ -2,33 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Felis Image Classification</title>
-  <!-- Use only the necessary fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Georgia|Arial:400" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
 
-  <!-- Link to your CSS file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-  <div class="login">
-    <h1>Felis Image Classification</h1>
+  <main class="app-container">
+    <header>
+      <h1>Cat Image Classification</h1>
+    </header>
 
-    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
-      <label for="imageInput">Select an image of a felis:</label>
-      <input type="file" id="imageInput" name="imageInput" accept="image/*" required>
-      <br><br>
-      <input type="submit" value="Predict">
-    </form>
+    <section class="upload-section">
+      <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+        
+        <div class="form-group">
+          <label for="imageInput" class="file-label">Upload a cat photo:</label>
+          <input type="file" id="imageInput" name="imageInput" accept="image/*" required>
+        </div>
 
-    <div id="imagePreview"></div>
+        <div id="imagePreview" aria-live="polite"></div>
 
-    <p>
-      <b>Predicted Class:</b> {{ predicted_class }}<br>
-    </p>
-  </div>
+        <button type="submit" class="submit-btn">Predict</button>
+      </form>
+    </section>
 
-  <!-- JavaScript for displaying image preview -->
+    {% if predicted_class %}
+    <section class="results-section" aria-live="assertive">
+      <h2>Prediction Result</h2>
+      <p><strong>Predicted Class:</strong> <span class="result-value">{{ predicted_class }}</span></p>
+    </section>
+    {% endif %}
+  </main>
+
   <script src="{{ url_for('static', filename='js/displayimage.js') }}"></script>
 </body>
 </html>

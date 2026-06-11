@@ -7,7 +7,6 @@ from keras.models import load_model
 from PIL import Image
 
 
-
 # Constants
 IMG_SIZE = (224, 224)
 CLASS_NAMES = [
